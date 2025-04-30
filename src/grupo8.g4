@@ -15,17 +15,17 @@ grammar grupo8;
     }
 }
 
-prg returns [Program prog]:'program' ID {$prog=new Program($ID.text, false);} ';' blq {$prog.setHayBloque(true);}'.'{System.out.println($prog.toString());};
-blq returns [Boolean bloq]: dcllist 'begin' sentlist 'end' {$bloq=true;};
-dcllist: dcl dcllist | ;
+//prg returns [Program prog]:'program' ID {$prog=new Program($ID.text, false);} ';' blq {$prog.setHayBloque(true);}'.'{System.out.println($prog.toString());};
+//blq returns [Boolean bloq]: dcllist 'begin' sentlist 'end' {$bloq=true;};
+//dcllist: dcl dcllist | ;
 
 sentlist: sent sentlistPrima;
 sentlistPrima : sent sentlistPrima| ;
 
-dcl : defcte | defvar | defproc| deffun;
-defcte returns [Variable varCte]: 'const' ctelist ;
-ctelist returns [Variable var] : ID '=' simpvalue {$var=new Variable($ID.text, $simpvalue.valor);}';'  ctelistPrima;
-ctelistPrima [Variable varP]: ID '=' simpvalue ';' ctelistPrima {$varP=new Variable($ID.text, $simpvalue.valor);}| ;
+//dcl : defcte | defvar | defproc| deffun;
+//defcte returns [Variable varCte]: 'const' ctelist ;
+//ctelist returns [Variable var] : ID '=' simpvalue {$var=new Variable($ID.text, $simpvalue.valor);}';'  ctelistPrima;
+//ctelistPrima [Variable varP]: ID '=' simpvalue ';' ctelistPrima {$varP=new Variable($ID.text, $simpvalue.valor);}| ;
 simpvalue returns [String valor]: CONSTINT {$valor=$CONSTINT.text;}| CONSTREAL  {$valor=$CONSTREAL.text;}| CONSTLIT {$valor=$CONSTLIT.text;};
 defvar: 'var' defvarlist;
 defvarlist : varlist ':' tbas ';' defvarlistPrima;
